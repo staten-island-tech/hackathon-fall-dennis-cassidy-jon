@@ -7,13 +7,13 @@ from ttkbootstrap import Style
 with open("songs.json", "r") as f:
     songs = json.load(f)
 
-with open("Questions.json", "r") as f:
-    Questions = json.load(Questions)
+with open("questions.json", "r") as f:
+    questions = json.load(f)
 
 # Function to display the current question and choices
 def show_question():
-    # Get the current question from the quiz_data list
-    question = quiz_data[current_question]
+    # Get the current question from the questions list
+    question = questions[current_question]
     qs_label.config(text= question['question'])
 
     # Display the choices on the buttons
@@ -27,8 +27,8 @@ def show_question():
 
 # Function to check the selected answer and provide feedback
 def check_answer(choice):
-    # Get the current question from the quiz_data list
-    question = quiz_data[current_question]
+    # Get the current question from the questions list
+    question = questions[current_question]
     selected_choice = choice_btns[choice].cget("text")
 
     # Check if the selected choice matches the correct answer
@@ -36,7 +36,7 @@ def check_answer(choice):
         # Update the score and display it
         global score
         score += 1
-        score_label.config(text="Score: {}/{}".format(score, len(quiz_data)))
+        score_label.config(text="Score: {}/{}".format(score, len(questions)))
         feedback_label.config(text="Correct!", foreground="green")
     else:
         feedback_label.config(text="Incorrect!", foreground="red")
@@ -51,13 +51,13 @@ def next_question():
     global current_question
     current_question +=1
 
-    if current_question < len(quiz_data):
+    if current_question < len(questions):
         # If there are more questions, show the next question
         show_question()
     else:
         # If all questions have been answered, display the final score and end the quiz
         messagebox.showinfo("Quiz Completed",
-                            "Quiz Completed! Final score: {}/{}".format(score, len(quiz_data)))
+                            "Quiz Completed! Final score: {}/{}".format(score, len(questions)))
         root.destroy()
 
 
@@ -66,12 +66,12 @@ root.title("Quiz App")
 root.geometry("600x500")
 style = Style(theme="flatly")
 
-question_label = Label(  root,
+question_label = ttk.Label(  root,
     anchor="center",
     wraplength=500,
     padding=10
 )
-qs_label.pack(pady=10)
+question_label.pack(pady=10)
 
 # Create the choice buttons
 choice_btns = []
@@ -97,7 +97,7 @@ score = 0
 # Create the score label
 score_label = ttk.Label(
     root,
-    text="Score: 0/{}".format(len(quiz_data)),
+    text="Score: 0/{}".format(len(questions)),
     anchor="center",
     padding=10
 )
