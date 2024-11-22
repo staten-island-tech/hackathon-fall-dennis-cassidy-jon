@@ -1,8 +1,8 @@
-import pygame
+import pygame # type: ignore
 import time
 import tkinter as tk
 from tkinter import messagebox
-import random
+import json
 
 pygame.mixer.init()
 
@@ -13,15 +13,27 @@ songs = [
 ]
 
 
-# Shuffle the songs (optional, to randomize the order)
-random.shuffle(songs)
+json.shuffle(songs)
 
-# Function to play a short clip of a song
 def play_song_clip(song_file):
     pygame.mixer.music.load(song_file)
     pygame.mixer.music.play()
-    # Play for a short period (e.g., 5 seconds)
-    time.sleep(5)  # Adjust this time to suit the length of your song clip
+
+    start_time = time.time()
+    while pygame.mixer.music.get_busy(): 
+        if time.time() - start_time > 5:
+            pygame.mixer.music.stop()
+            break
+        time.sleep(0.5)
     pygame.mixer.music.stop()
 
+def show_song_clip():
+    song = songs[0] 
+    messagebox.showinfo("Now Playing", f"Now playing: {song['title']}")
+    play_song_clip(song["file"])
 
+root = tk.Tk()
+root.title("Christmas Song Player")
+
+play_button = tk.Button(root, text="Play Song Clip", command=show_song_clip)
+play_button.pack(pady=20)

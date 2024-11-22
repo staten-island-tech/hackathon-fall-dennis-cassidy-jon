@@ -1,0 +1,31 @@
+{
+    "songs": [
+      {
+        "file": "song1.mp3",
+        "title": "Last Christmas",
+        "artist": "Wham!",
+        "album": "Last Christmas - Single",
+        "duration": 230,
+        "genre": "Pop",
+        "release_date": "1984-11-03"
+      },
+      {
+        "file": "song2.mp3",
+        "title": "It's Beginning to Look a Lot Like Christmas",
+        "artist": "Michael Bublé",
+        "album": "Christmas",
+        "duration": 180,
+        "genre": "Jazz",
+        "release_date": "2011-10-24"
+      },
+      {
+        "file": "song3.mp3",
+        "title": "Jingle Bells",
+        "artist": "Frank Sinatra",
+        "album": "A Jolly Christmas from Frank Sinatra",
+        "duration": 150,
+        "genre": "Holiday",
+        "release_date": "1957-10-01"
+      }
+    ]
+  }
