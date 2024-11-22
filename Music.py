@@ -10,6 +10,56 @@ def show_question():
     question = quiz_data[current_question]
     qs_label.config(text=question["question"])
 
+# Function to display the current question and choices
+def show_question():
+    # Get the current question from the quiz_data list
+    question = quiz_data[current_question]
+    qs_label.config(text=question["question"])
+
+    # Display the choices on the buttons
+    choices = question["choices"]
+    for i in range(4):
+        choice_btns[i].config(text=choices[i], state="normal") # Reset button state
+
+    # Clear the feedback label and disable the next button
+    feedback_label.config(text="")
+    next_btn.config(state="disabled")
+
+# Function to check the selected answer and provide feedback
+def check_answer(choice):
+    # Get the current question from the quiz_data list
+    question = quiz_data[current_question]
+    selected_choice = choice_btns[choice].cget("text")
+
+    # Check if the selected choice matches the correct answer
+    if selected_choice == question["answer"]:
+        # Update the score and display it
+        global score
+        score += 1
+        score_label.config(text="Score: {}/{}".format(score, len(quiz_data)))
+        feedback_label.config(text="Correct!", foreground="green")
+    else:
+        feedback_label.config(text="Incorrect!", foreground="red")
+    
+    # Disable all choice buttons and enable the next button
+    for button in choice_btns:
+        button.config(state="disabled")
+    next_btn.config(state="normal")
+
+# Function to move to the next question
+def next_question():
+    global current_question
+    current_question +=1
+
+    if current_question < len(quiz_data):
+        # If there are more questions, show the next question
+        show_question()
+    else:
+        # If all questions have been answered, display the final score and end the quiz
+        messagebox.showinfo("Quiz Completed",
+                            "Quiz Completed! Final score: {}/{}".format(score, len(quiz_data)))
+        root.destroy()
+
 
 root = tk.Tk()
 root.title("Quiz App")
