@@ -1,23 +1,23 @@
+import json
 import tkinter as tk
 from tkinter import messagebox, ttk
 import ttkbootstrap
 from ttkbootstrap import Style
-from quiz_data import quiz_data
+
+with open("songs.json", "r") as f:
+    songs = json.load(f)
+
+with open("Questions.json", "r") as f:
+    Questions = json.load(Questions)
 
 # Function to display the current question and choices
 def show_question():
     # Get the current question from the quiz_data list
     question = quiz_data[current_question]
-    qs_label.config(text=question["question"])
-
-# Function to display the current question and choices
-def show_question():
-    # Get the current question from the quiz_data list
-    question = quiz_data[current_question]
-    qs_label.config(text=question["question"])
+    qs_label.config(text= question['question'])
 
     # Display the choices on the buttons
-    choices = question["choices"]
+    choices = questions["options"]
     for i in range(4):
         choice_btns[i].config(text=choices[i], state="normal") # Reset button state
 
