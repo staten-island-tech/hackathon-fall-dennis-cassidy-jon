@@ -6,7 +6,8 @@
         "Let it Snow!",
         "Last Christmas",
         "Jingle Bell Rock"
-    ]
+    ],
+    "answer": "Last Christmas"
 
 },
 {
@@ -17,7 +18,8 @@
         "All I Want for Christmas is You",
         "Let it Snow!",
         "Jingle Bells"
-    ]
+    ],
+    "answer": "Jingle Bells"
 },
 {
     "id": 3,
@@ -27,7 +29,8 @@
         "It's beginning to look a lot like Christmas",
         "Jingle Bells",
         "Last Christmas"
-    ]
+    ],
+    "answer": "It's beginning to look a lot like Christmas"
 },
 {
     "id": 4,
@@ -37,17 +40,19 @@
         "Jingle Bell Rock",
         "All I Want for Christmas is You",
         "Last Christmas"
-    ]
+    ],
+    "answer": "Jingle Bell Rock"
 },
 {
     "id": 5,
     "question":"Which Christmas song is this?",
     "options": [
-        "It's beginning to look a lot like Christmas",
-        "Jingle Bell Rock",
         "All I Want for Christmas is You",
+        "Jingle Bell Rock",
+        "It's beginning to look a lot like Christmas",
         "Let it Snow!"
-    ]
+    ],
+    "answer": "All I Want for Christmas is You"
 },
 {
     "id": 6,
@@ -57,5 +62,6 @@
         "Jingle Bells",
         "It's beginning to look a lot like Christmas",
         "Let it Snow!"
-    ]
+    ],
+    "answer": "Let it Snow!"
 }]
