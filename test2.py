@@ -10,30 +10,41 @@ pygame.mixer.init()
 with open("songs.json", "r") as f:
     songs = json.load(f)
 
+
 random.shuffle(songs)
 
 songs = [
-    {"file": "song3.mp3", "title": "Last Christmas"},
-    {"file": "song3.mp3", "title": "Jingle Bells"},
-    {"file": "song3.mp3", "title": "It's Beginning to Look a Lot Like Christmas"},
-    {"file": "song3.mp3", "title": "Jingle Bell Rock"},
-    {"file": "song3.mp3", "title": "All I Want for Christmas is You"},
-    {"file": "song3.mp3", "title": "Let it Snow!"},            
+    {"file": "song1.mp3", "name": "Last Christmas"},
+    {"file": "song2.mp3", "name": "Jingle Bells"},
+    {"file": "song3.mp3", "name": "It's Beginning to Look a Lot Like Christmas"},
+    {"file": "song4.mp3", "name": "Jingle Bell Rock"},
+    {"file": "song5.mp3", "name": "All I Want for Christmas is You"},
+    {"file": "song6.mp3", "name": "Let it Snow!"},            
        ]
 
-def play_song_clip():
-    pygame.mixer.music.play()
+
+def play_song_clip(song_file):
+    try:
+        pygame.mixer.music.load(song_file)  
+        pygame.mixer.music.play()
+    except pygame.error as e:
+        print(f"Error loading or playing the song: {e}")
+        return
+
     start_time = time.time()
-    while pygame.mixer.music.get_busy(): 
-        if time.time() - start_time > 5:
+    while pygame.mixer.music.get_busy():  
+        if time.time() - start_time > 5: 
             pygame.mixer.music.stop()
             break
         time.sleep(0.5)
+
     pygame.mixer.music.stop()
 
 def show_song_clip():
     song = songs[0]  
-    play_song_clip()
+    messagebox.showinfo("Now Playing")
+    play_song_clip(song["file"]) 
+
 
 root = tk.Tk()
 root.title("Christmas Song Player")
