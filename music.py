@@ -14,8 +14,11 @@ random.shuffle(songs)
 songs = [
     {"file": "song1.mp3", "title": "Last Christmas"},
     {"file": "song2.mp3", "title": "It's Beginning to Look a Lot Like Christmas"},
-    {"file": "song3.mp3", "title": "Jingle Bells"}
-]
+    {"file": "song3.mp3", "title": "Jingle Bells"},
+    {"file": "song4.mp4", "title": "Jingle Bell Rock"},
+    {"file": "song5.mp5", "title": "All I Want For Christmas is You"},
+    {"file": "song6.mp6", "title": "Let it Snow!"},            
+       ]
 
 
 def play_song_clip(song_file):
