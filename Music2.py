@@ -131,6 +131,7 @@ next_btn = ttk.Button(
 )
 next_btn.pack(pady=10)
 
+root.mainloop()
 
 
 with open ("songs.json", "r") as f:
@@ -201,7 +202,6 @@ play_button.pack(pady=20)
 
 show_question()
 
-root.mainloop()
 root.mainloop()
 
 
