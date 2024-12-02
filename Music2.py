@@ -1,12 +1,13 @@
 import time
 import json
 import random
+import pygame
 import tkinter as tk
 from tkinter import messagebox, ttk
 import ttkbootstrap
 from ttkbootstrap import Style
 from tkinter import messagebox
-
+x=0
 with open("songs.json", "r") as f:
     songs = json.load(f)
 
@@ -17,10 +18,10 @@ with open("questions.json", "r") as f:
 def show_question():
     # Get the current question from the questions list
     question = questions[current_question]
-    qs_label.config(text= question['question'])
+    question_label.config(text= question['question'])
 
     # Display the choices on the buttons
-    choices = questions["options"]
+    choices = questions[x]['options']
     for i in range(4):
         choice_btns[i].config(text=choices[i], state="normal") # Reset button state
 
@@ -118,10 +119,11 @@ next_btn.pack(pady=10)
 current_question = 0
 
 
-show_question()
 
-root.mainloop()
-root.mainloop()
+
+
+
+
 with open ("songs.json", "r") as f:
     songs = json.load (f)
     
@@ -206,5 +208,10 @@ root.title("Christmas Song Player")
 
 root.mainloop()
  """
-play_button = tk.Button(root, text="Play Song Clip", command=show_song_clip)
+play_button = tk.Button(root, text="Play Song Clip", command=play_song_clip)
 play_button.pack(pady=20)
+
+show_question()
+
+root.mainloop()
+root.mainloop()

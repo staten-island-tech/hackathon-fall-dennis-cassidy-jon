@@ -14,14 +14,13 @@ with open("songs.json", "r") as f:
 random.shuffle(songs)
 
 songs = [
-    {"file": "song1.mp3", "name": "Last Christmas"},
-    {"file": "song2.mp3", "name": "Jingle Bells"},
-    {"file": "song3.mp3", "name": "It's Beginning to Look a Lot Like Christmas"},
-    {"file": "song4.mp3", "name": "Jingle Bell Rock"},
-    {"file": "song5.mp3", "name": "All I Want for Christmas is You"},
-    {"file": "song6.mp3", "name": "Let it Snow!"},            
+    {"file": "song1.mp3.mp3", "name": "Last Christmas"},
+    {"file": "song2.mp3.mp3", "name": "Jingle Bells"},
+    {"file": "song3.mp3.mp3", "name": "It's Beginning to Look a Lot Like Christmas"},
+    {"file": "song4.mp3.mp3", "name": "Jingle Bell Rock"},
+    {"file": "song5.mp3.mp3", "name": "All I Want for Christmas is You"},
+    {"file": "song6.mp3.mp3", "name": "Let it Snow!"},            
        ]
-
 
 def play_song_clip(song_file):
     try:
