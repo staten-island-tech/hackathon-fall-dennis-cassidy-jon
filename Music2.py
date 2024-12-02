@@ -8,8 +8,10 @@ import ttkbootstrap
 from ttkbootstrap import Style
 from tkinter import messagebox
 x=0
+current_question = 0
+
 with open("songs.json", "r") as f:
-    songs = json.load(f)
+    Songs = json.load(f)
 
 with open("questions.json", "r") as f:
     questions = json.load(f)
@@ -20,6 +22,9 @@ def show_question():
     question = questions[current_question]
     question_label.config(text= question['question'])
 
+
+    
+    
     # Display the choices on the buttons
     choices = questions[x]['options']
     for i in range(4):
@@ -53,7 +58,7 @@ def check_answer(choice):
 # Function to move to the next question
 def next_question():
     global current_question
-    current_question +=1
+    x = x + 1
 
     if current_question < len(questions):
         # If there are more questions, show the next question
@@ -70,12 +75,22 @@ root.title("Quiz App")
 root.geometry("600x500")
 style = Style(theme="flatly")
 
+
+
 question_label = ttk.Label(  root,
     anchor="center",
     wraplength=500,
     padding=10
 )
 question_label.pack(pady=10)
+text_box = tk.Text(root, height=10, width=30, bd=3, relief="solid", wrap="word")
+text_box.config(state=tk.DISABLED)  # Make the text box non-editable
+text_box.pack(padx=10, pady=10)
+
+
+while x != 5:   
+    text_box.insert(tk.END, Songs[x]['lyrics'])
+
 
 # Create the choice buttons
 choice_btns = []
@@ -116,12 +131,7 @@ next_btn = ttk.Button(
 )
 next_btn.pack(pady=10)
 
-current_question = 0
-
-
-
-
-
+root.mainloop()
 
 
 with open ("songs.json", "r") as f:
@@ -186,32 +196,13 @@ def play_song_clip(song_file):
 
 
 
-""" print('Imported')
-def show_song_clip():
-    song = songs[0] 
-    messagebox.showinfo("Now Playing", f"Now playing: {song['title']}")
-    play_song_clip(song["file"])
 
-root = tk.Tk()
-root.title("Pack Example")
-
-# Create three buttons
-button1 = tk.Button(root, text="Button 1")
-button2 = tk.Button(root, text="Button 2")
-button3 = tk.Button(root, text="Button 3")
-
-# Pack the buttons vertically
-button1.place(x=600, y=250)
-button2.place(x=0, y=550)
-button3.place(x=600, y=10)
-root.title("Christmas Song Player")
-
-root.mainloop()
- """
 play_button = tk.Button(root, text="Play Song Clip", command=play_song_clip)
 play_button.pack(pady=20)
 
 show_question()
 
 root.mainloop()
-root.mainloop()
+
+
+print(current_question)
